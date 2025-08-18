@@ -13,7 +13,7 @@ sudo pacman -S --noconfirm \
   virtualbox virtualbox-host-dkms virtualbox-guest-iso linux-zen-headers \
   libreoffice-still imv xarchiver okular grub efibootmgr os-prober \
   thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman \
-  ffmpegthumbnailer tumbler gvfs gvfs-mtp gvfs-gphoto2
+  ffmpegthumbnailer tumbler gvfs gvfs-mtp gvfs-gphoto2 telegram-desktop
 
 # Configuração GTK
 mkdir -p ~/.config/gtk-3.0
@@ -52,10 +52,7 @@ unzip -o JetBrainsMono-2.304.zip -d ~/.fonts/
 fc-cache -fv
 
 # Instalação do yay
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
-cd ..
+git clone https://aur.archlinux.org/yay.git && (cd yay && makepkg -si --noconfirm)
 
 # Instalação de programas com AUR
 
@@ -71,7 +68,7 @@ sudo pacman -S --noconfirm \
 sudo modprobe vboxdrv
 sudo usermod -aG vboxusers "$USER"
 vboxver=$(vboxmanage -v | cut -dr -f1) 
-wget https://download.virtualbox.org/virtualbox/$vboxver/Oracle_VM_VirtualBox_Extension_Pack-$vboxver.vbox-extpack
+wget https://download.virtualbox.org/virtualbox/$((vboxver))/Oracle_VM_VirtualBox_Extension_Pack-$((vboxver)).vbox-extpack
 
 # Configuração Docker
 sudo systemctl enable --now docker
