@@ -52,7 +52,10 @@ unzip -o JetBrainsMono-2.304.zip -d ~/.fonts/
 fc-cache -fv
 
 # Instalação do yay
-git clone https://aur.archlinux.org/yay.git && (cd yay && makepkg -si --noconfirm)
+if [ ! -d yay ]; then
+    git clone --depth 1 https://aur.archlinux.org/yay.git
+    (cd yay && makepkg -si --noconfirm)
+fi
 
 # Instalação de programas com AUR
 
